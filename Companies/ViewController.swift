@@ -9,10 +9,14 @@
 import UIKit
 
 class ViewController: UITableViewController {
+    
+    let companies = [
+        Company(name: "Apple", founded: Date()),
+        Company(name: "Google", founded: Date())
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         
         setupNavigation()
@@ -37,14 +41,16 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         cell.backgroundColor = .teal
-        cell.textLabel?.text = "Company"
+        
+        let company = companies[indexPath.row]
+        cell.textLabel?.text = company.name
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return companies.count
     }
     
     func setupNavigation() {
