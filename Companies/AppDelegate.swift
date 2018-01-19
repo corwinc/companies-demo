@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         // Instantiate view controller as subclass of ViewController
-        let companiesViewController = ViewController()
+        let companiesViewController = CompaniesController()
         
         // Instantiate Navigation Controller w/ Root View Controller
         let navController = UINavigationController(rootViewController: companiesViewController)

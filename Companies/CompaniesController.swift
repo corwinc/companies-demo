@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class CompaniesController: UITableViewController {
     
     let companies = [
         Company(name: "Apple", founded: Date()),
