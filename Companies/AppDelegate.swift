@@ -31,7 +31,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Add Nav Controller to window
         window?.rootViewController = navController
         
+        // Set UINavigationBar Appearance Proxy
+        setUINavigationBarAppearance()
+        
         return true
+    }
+    
+    func setUINavigationBarAppearance() {
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = .lightRed
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

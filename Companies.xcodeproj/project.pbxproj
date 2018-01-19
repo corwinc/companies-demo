@@ -14,6 +14,7 @@
 		FC26F7782011B1A6000BCA34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC26F7762011B1A6000BCA34 /* LaunchScreen.storyboard */; };
 		FC26F7802011B832000BCA34 /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC26F77F2011B832000BCA34 /* UIColor+theme.swift */; };
 		FC26F7822011C952000BCA34 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC26F7812011C952000BCA34 /* Company.swift */; };
+		FC26F7842011CEC8000BCA34 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC26F7832011CEC8000BCA34 /* CreateCompanyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FC26F7792011B1A6000BCA34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC26F77F2011B832000BCA34 /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		FC26F7812011C952000BCA34 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		FC26F7832011CEC8000BCA34 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				FC26F7792011B1A6000BCA34 /* Info.plist */,
 				FC26F77F2011B832000BCA34 /* UIColor+theme.swift */,
 				FC26F7812011C952000BCA34 /* Company.swift */,
+				FC26F7832011CEC8000BCA34 /* CreateCompanyController.swift */,
 			);
 			path = Companies;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			files = (
 				FC26F7802011B832000BCA34 /* UIColor+theme.swift in Sources */,
 				FC26F7702011B1A6000BCA34 /* CompaniesController.swift in Sources */,
+				FC26F7842011CEC8000BCA34 /* CreateCompanyController.swift in Sources */,
 				FC26F76E2011B1A6000BCA34 /* AppDelegate.swift in Sources */,
 				FC26F7822011C952000BCA34 /* Company.swift in Sources */,
 			);
