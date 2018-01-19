@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setUINavigationBarAppearance() {
+        UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = .lightRed
         UINavigationBar.appearance().prefersLargeTitles = true
