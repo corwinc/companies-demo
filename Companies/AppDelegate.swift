@@ -8,11 +8,16 @@
 
 import UIKit
 
+class CustomNavigationController: UINavigationController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -26,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let companiesViewController = CompaniesController()
         
         // Instantiate Navigation Controller w/ Root View Controller
-        let navController = UINavigationController(rootViewController: companiesViewController)
+        let navController = CustomNavigationController(rootViewController: companiesViewController)
 
         // Add Nav Controller to window
         window?.rootViewController = navController

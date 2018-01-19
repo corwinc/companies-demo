@@ -29,7 +29,7 @@ class CompaniesController: UITableViewController {
         let createCompanyController = CreateCompanyController()
 //        createCompanyController.view.backgroundColor = .green
         
-        let navController = UINavigationController(rootViewController: createCompanyController)
+        let navController = CustomNavigationController(rootViewController: createCompanyController)
         
         
         present(navController, animated: true, completion: nil)
