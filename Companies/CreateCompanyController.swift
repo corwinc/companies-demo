@@ -66,6 +66,7 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
     lazy var companyImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "select_photo_empty"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectPhoto)))
         return imageView
