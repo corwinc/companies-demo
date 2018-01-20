@@ -15,5 +15,6 @@ class CreateEmployeeController: UIViewController {
         view.backgroundColor = .darkBlue
         navigationItem.title = "Create Employee"
         setupCancelButton()
+        _ = setupLightBlueBackgroundView(height: 50)
     }
 }
