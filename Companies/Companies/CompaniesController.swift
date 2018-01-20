@@ -9,19 +9,7 @@
 import UIKit
 import CoreData
 
-class CompaniesController: UITableViewController, CreateCompanyControllerDelegate {
-    func didEditcompany(company: Company) {
-        let row = companies.index(of: company)
-        let reloadIndexPath = IndexPath(row: row!, section: 0)
-        tableView.reloadRows(at: [reloadIndexPath], with: .middle)
-    }
-    
-    func didAddCompany(company: Company) {
-        companies.append(company)
-        let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
-        tableView.insertRows(at: [newIndexPath], with: .automatic)
-    }
-    
+class CompaniesController: UITableViewController {
     var companies = [Company]() // Creates empty array
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
