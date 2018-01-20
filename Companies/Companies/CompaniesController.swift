@@ -24,10 +24,8 @@ class CompaniesController: UITableViewController {
     }
     
     @objc private func handleReset() {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Company.fetchRequest())
         do {
-            try context.execute(batchDeleteRequest)
+            try CoreDataManager.shared.deleteCompanies()
             
             // Upon request success
             var indexPathsToRemove = [IndexPath]()
