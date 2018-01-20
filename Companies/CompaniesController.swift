@@ -95,9 +95,19 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         do {
             try context.execute(batchDeleteRequest)
             
-            // Remove from tableView
+            // Upon request success
+            var indexPathsToRemove = [IndexPath]()
+            
+            for (index, _) in companies.enumerated() {
+                let indexPath = IndexPath(row: index, section: 0)
+                indexPathsToRemove.append(indexPath)
+            }
+            
+            // Remove companies from array
             companies.removeAll()
-            tableView.reloadData()
+            
+            // Remove rows from tableView with animation
+            tableView.deleteRows(at: indexPathsToRemove, with: .left)
         } catch let delErr {
             print("Error resetting companies...", delErr)
         }
