@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CompaniesController: UITableViewController, CreateCompanyControllerDelegate {
     func didAddCompany(company: Company) {
@@ -16,9 +17,34 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     }
     
     var companies = [Company]() // Creates empty array
-
+    
+    func fetchCompanies() {
+        let persistentContainer = NSPersistentContainer(name: "CompanyModel")
+        persistentContainer.loadPersistentStores { (storeDescription, err) in
+            if let err = err {
+                fatalError("Loading store failed: \(err)")
+            }
+        }
+        
+        let context = persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
+        
+        do {
+            let companies = try context.fetch(fetchRequest)
+            
+            companies.forEach({ (company) in
+                print(company.name ?? "")
+            })
+        } catch let fetchErr {
+            print("Error fetching co:", fetchErr)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchCompanies()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         
