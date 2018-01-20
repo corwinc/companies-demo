@@ -89,6 +89,20 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         setupTableViewStyle()
     }
     
+    @objc private func handleReset() {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Company.fetchRequest())
+        do {
+            try context.execute(batchDeleteRequest)
+            
+            // Remove from tableView
+            companies.removeAll()
+            tableView.reloadData()
+        } catch let delErr {
+            print("Error resetting companies...", delErr)
+        }
+    }
+    
     @objc func handleAddCompany() {
         print("Adding company...")
         
@@ -142,6 +156,7 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     
     func setupNavigation() {
         navigationItem.title = "Companies"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
     }
     
