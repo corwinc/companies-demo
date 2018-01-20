@@ -10,13 +10,20 @@ import UIKit
 
 class CompaniesController: UITableViewController {
     
-    let companies = [
+    var companies = [
         Company(name: "Apple", founded: Date()),
         Company(name: "Google", founded: Date())
     ]
+    
+    func addCompany(company: Company) {
+        companies.append(company)
+        let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         
         setupNavigation()
@@ -27,10 +34,10 @@ class CompaniesController: UITableViewController {
         print("Adding company...")
         
         let createCompanyController = CreateCompanyController()
-//        createCompanyController.view.backgroundColor = .green
         
         let navController = CustomNavigationController(rootViewController: createCompanyController)
         
+        createCompanyController.companiesController = self
         
         present(navController, animated: true, completion: nil)
     }
