@@ -19,6 +19,12 @@ class EmployeesController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupPlusButtonInNavBar(selector: #selector(handleAdd))
+        
         tableView.backgroundColor = .yellow
+    }
+    
+    @objc private func handleAdd() {
+        print("adding...")
     }
 }

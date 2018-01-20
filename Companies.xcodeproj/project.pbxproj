@@ -22,6 +22,7 @@
 		FCC0693620134FC700207354 /* CompaniesController+CreateCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */; };
 		FCC0693A201350F300207354 /* CompaniesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC06939201350F300207354 /* CompaniesController+UITableView.swift */; };
 		FCC0693C2013590700207354 /* EmployeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693B2013590700207354 /* EmployeesController.swift */; };
+		FCC0693F20135B8D00207354 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+CreateCompany.swift"; sourceTree = "<group>"; };
 		FCC06939201350F300207354 /* CompaniesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+UITableView.swift"; sourceTree = "<group>"; };
 		FCC0693B2013590700207354 /* EmployeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesController.swift; sourceTree = "<group>"; };
+		FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		FC26F76C2011B1A6000BCA34 /* Companies */ = {
 			isa = PBXGroup;
 			children = (
+				FCC0693D20135B7C00207354 /* Helpers */,
 				FCC06934201339E800207354 /* Companies */,
 				FC26F76D2011B1A6000BCA34 /* AppDelegate.swift */,
 				FCC0692D2012E70600207354 /* CompanyModel.xcdatamodeld */,
@@ -100,6 +103,14 @@
 				FCC0693B2013590700207354 /* EmployeesController.swift */,
 			);
 			path = Companies;
+			sourceTree = "<group>";
+		};
+		FCC0693D20135B7C00207354 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 				FCC069312012F13100207354 /* CoreDataManager.swift in Sources */,
 				FC26F7822011C952000BCA34 /* Company.swift in Sources */,
 				FCC0693620134FC700207354 /* CompaniesController+CreateCompany.swift in Sources */,
+				FCC0693F20135B8D00207354 /* UIViewController+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
