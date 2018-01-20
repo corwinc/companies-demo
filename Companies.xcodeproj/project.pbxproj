@@ -23,6 +23,7 @@
 		FCC0693A201350F300207354 /* CompaniesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC06939201350F300207354 /* CompaniesController+UITableView.swift */; };
 		FCC0693C2013590700207354 /* EmployeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693B2013590700207354 /* EmployeesController.swift */; };
 		FCC0693F20135B8D00207354 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */; };
+		FCC069412013604400207354 /* CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC069402013604400207354 /* CreateEmployeeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		FCC06939201350F300207354 /* CompaniesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+UITableView.swift"; sourceTree = "<group>"; };
 		FCC0693B2013590700207354 /* EmployeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesController.swift; sourceTree = "<group>"; };
 		FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
+		FCC069402013604400207354 /* CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmployeeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +88,6 @@
 				FC26F7792011B1A6000BCA34 /* Info.plist */,
 				FC26F77F2011B832000BCA34 /* UIColor+theme.swift */,
 				FC26F7812011C952000BCA34 /* Company.swift */,
-				FC26F7832011CEC8000BCA34 /* CreateCompanyController.swift */,
 				FCC0692B2011DC6F00207354 /* CustomNavigationController.swift */,
 				FCC069302012F13100207354 /* CoreDataManager.swift */,
 			);
@@ -101,6 +102,8 @@
 				FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */,
 				FCC06939201350F300207354 /* CompaniesController+UITableView.swift */,
 				FCC0693B2013590700207354 /* EmployeesController.swift */,
+				FCC069402013604400207354 /* CreateEmployeeController.swift */,
+				FC26F7832011CEC8000BCA34 /* CreateCompanyController.swift */,
 			);
 			path = Companies;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCC0692F2012E70600207354 /* CompanyModel.xcdatamodeld in Sources */,
+				FCC069412013604400207354 /* CreateEmployeeController.swift in Sources */,
 				FCC0693A201350F300207354 /* CompaniesController+UITableView.swift in Sources */,
 				FCC0692C2011DC6F00207354 /* CustomNavigationController.swift in Sources */,
 				FC26F7802011B832000BCA34 /* UIColor+theme.swift in Sources */,
