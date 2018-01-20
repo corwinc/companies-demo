@@ -21,6 +21,7 @@
 		FCC069332013392500207354 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC069322013392500207354 /* CompanyCell.swift */; };
 		FCC0693620134FC700207354 /* CompaniesController+CreateCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */; };
 		FCC0693A201350F300207354 /* CompaniesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC06939201350F300207354 /* CompaniesController+UITableView.swift */; };
+		FCC0693C2013590700207354 /* EmployeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693B2013590700207354 /* EmployeesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FCC069322013392500207354 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+CreateCompany.swift"; sourceTree = "<group>"; };
 		FCC06939201350F300207354 /* CompaniesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+UITableView.swift"; sourceTree = "<group>"; };
+		FCC0693B2013590700207354 /* EmployeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				FCC069322013392500207354 /* CompanyCell.swift */,
 				FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */,
 				FCC06939201350F300207354 /* CompaniesController+UITableView.swift */,
+				FCC0693B2013590700207354 /* EmployeesController.swift */,
 			);
 			path = Companies;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				FC26F7702011B1A6000BCA34 /* CompaniesController.swift in Sources */,
 				FCC069332013392500207354 /* CompanyCell.swift in Sources */,
 				FC26F7842011CEC8000BCA34 /* CreateCompanyController.swift in Sources */,
+				FCC0693C2013590700207354 /* EmployeesController.swift in Sources */,
 				FC26F76E2011B1A6000BCA34 /* AppDelegate.swift in Sources */,
 				FCC069312012F13100207354 /* CoreDataManager.swift in Sources */,
 				FC26F7822011C952000BCA34 /* Company.swift in Sources */,
