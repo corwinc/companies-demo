@@ -18,6 +18,7 @@
 		FCC0692C2011DC6F00207354 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0692B2011DC6F00207354 /* CustomNavigationController.swift */; };
 		FCC0692F2012E70600207354 /* CompanyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCC0692D2012E70600207354 /* CompanyModel.xcdatamodeld */; };
 		FCC069312012F13100207354 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC069302012F13100207354 /* CoreDataManager.swift */; };
+		FCC069332013392500207354 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC069322013392500207354 /* CompanyCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FCC0692B2011DC6F00207354 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		FCC0692E2012E70600207354 /* CompanyModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CompanyModel.xcdatamodel; sourceTree = "<group>"; };
 		FCC069302012F13100207354 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		FCC069322013392500207354 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +68,8 @@
 		FC26F76C2011B1A6000BCA34 /* Companies */ = {
 			isa = PBXGroup;
 			children = (
+				FCC06934201339E800207354 /* Companies */,
 				FC26F76D2011B1A6000BCA34 /* AppDelegate.swift */,
-				FC26F76F2011B1A6000BCA34 /* CompaniesController.swift */,
 				FCC0692D2012E70600207354 /* CompanyModel.xcdatamodeld */,
 				FC26F7712011B1A6000BCA34 /* Main.storyboard */,
 				FC26F7742011B1A6000BCA34 /* Assets.xcassets */,
@@ -78,6 +80,15 @@
 				FC26F7832011CEC8000BCA34 /* CreateCompanyController.swift */,
 				FCC0692B2011DC6F00207354 /* CustomNavigationController.swift */,
 				FCC069302012F13100207354 /* CoreDataManager.swift */,
+			);
+			path = Companies;
+			sourceTree = "<group>";
+		};
+		FCC06934201339E800207354 /* Companies */ = {
+			isa = PBXGroup;
+			children = (
+				FC26F76F2011B1A6000BCA34 /* CompaniesController.swift */,
+				FCC069322013392500207354 /* CompanyCell.swift */,
 			);
 			path = Companies;
 			sourceTree = "<group>";
@@ -158,6 +169,7 @@
 				FCC0692C2011DC6F00207354 /* CustomNavigationController.swift in Sources */,
 				FC26F7802011B832000BCA34 /* UIColor+theme.swift in Sources */,
 				FC26F7702011B1A6000BCA34 /* CompaniesController.swift in Sources */,
+				FCC069332013392500207354 /* CompanyCell.swift in Sources */,
 				FC26F7842011CEC8000BCA34 /* CreateCompanyController.swift in Sources */,
 				FC26F76E2011B1A6000BCA34 /* AppDelegate.swift in Sources */,
 				FCC069312012F13100207354 /* CoreDataManager.swift in Sources */,
