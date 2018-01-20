@@ -29,8 +29,16 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
             
             if let imageData = company?.imageData {
                 companyImageView.image = UIImage(data: imageData)
+                setupCircularImageStyle()
             }
         }
+    }
+    
+    private func setupCircularImageStyle() {
+        companyImageView.layer.cornerRadius = companyImageView.frame.width / 2
+        companyImageView.clipsToBounds = true
+        companyImageView.layer.borderColor = UIColor.darkBlue.cgColor
+        companyImageView.layer.borderWidth = 2
     }
     
     let nameLabel: UILabel = {
@@ -75,6 +83,8 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
         } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             companyImageView.image = originalImage
         }
+        
+        setupCircularImageStyle()
         
         dismiss(animated: true, completion: nil)
     }
