@@ -103,6 +103,19 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         }
     }
     
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "No companies available..."
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return companies.count == 0 ? 150 : 0
+    }
+    
     @objc func handleAddCompany() {
         print("Adding company...")
         
