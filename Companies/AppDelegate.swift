@@ -8,6 +8,13 @@
 
 import UIKit
 
+// Need this extension in addition to CustomNavigationController for UIImagePickerController; cannot use CustomNC for it
+extension UINavigationController {
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
