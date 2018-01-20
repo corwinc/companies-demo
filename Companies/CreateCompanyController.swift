@@ -21,10 +21,15 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
     var company: Company? {
         didSet {
             nameTextField.text = company?.name
+            
             // Use guard statement to handle case where founded == nil
             // Use 'guard let' if you don't have to return anything; 'if let' if you do
             guard let founded = company?.founded else { return }
             datePicker.date = founded
+            
+            if let imageData = company?.imageData {
+                companyImageView.image = UIImage(data: imageData)
+            }
         }
     }
     
@@ -130,6 +135,11 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
         // Must use setValue if object doesn't exist in CoreData yet; otherwise can access property via obj.property
         company.setValue(nameTextField.text, forKey: "name")
         company.setValue(datePicker.date, forKey: "founded")
+        
+        if let companyImage = companyImageView.image {
+            let imageData = UIImageJPEGRepresentation(companyImage, 0.8)
+            company.setValue(imageData, forKey: "imageData")
+        }
         
         // Perform Save
         do {

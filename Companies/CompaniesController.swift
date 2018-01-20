@@ -117,8 +117,6 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         
         let company = companies[indexPath.row]
         if let name = company.name, let founded = company.founded {
-//            let locale = Locale(identifier: "EN")
-//            let dateStr = "\(name) - Founded: \(founded.description(with: locale))"
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMM dd, yyy"
             let foundedDateStr = dateFormatter.string(from: founded)
@@ -129,6 +127,12 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         }
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        cell.imageView?.image = #imageLiteral(resourceName: "select_photo_empty")
+        if let imageData = company.imageData {
+            cell.imageView?.image = UIImage(data: imageData)
+        }
+        
         return cell
     }
     
