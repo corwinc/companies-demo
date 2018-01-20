@@ -59,16 +59,15 @@ class CreateCompanyController: UIViewController {
         // Perform Save
         do {
             try context.save()
+            
+            // succuess
+            dismiss(animated: true, completion: {
+                // Must be cast as! Company (NSManagedObject class)
+                self.delegate?.didAddCompany(company: company as! Company)
+            })
         } catch let saveErr {
             print("Error saving company:", saveErr)
         }
-        
-        
-//        dismiss(animated: true) {
-//            guard let name = self.nameTextField.text else { return }
-//            let company = Company(name: name, founded: Date())
-//            self.delegate?.didAddCompany(company: company)
-//        }
     }
     
     private func setupUI() {
