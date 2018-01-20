@@ -44,15 +44,8 @@ class CreateCompanyController: UIViewController {
     }
     
     @objc private func handleSave() {
-        // Initialize Core Data stack
-        let persistentContainer = NSPersistentContainer(name: "CompanyModel")
-        persistentContainer.loadPersistentStores { (storeDescription, err) in
-            if let err = err {
-                fatalError("Loading store failed: \(err)")
-            }
-        }
-        
-        let context = persistentContainer.viewContext
+        // Use singleton CoreDataManager class to maintain closure to context after dismiss has completed
+        let context = CoreDataManager.shared.persistentContainer.viewContext
         let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
         company.setValue(nameTextField.text, forKey: "name")
         
