@@ -40,12 +40,11 @@ class CreateCompanyController: UIViewController {
     
     @objc private func handleSave() {
         print("Saving...")
-        dismiss(animated: true, completion: nil)
-        
-        guard let name = nameTextField.text else { return }
-        let company = Company(name: name, founded: Date())
-        
-        companiesController?.addCompany(company: company)
+        dismiss(animated: true) {
+            guard let name = self.nameTextField.text else { return }
+            let company = Company(name: name, founded: Date())
+            self.companiesController?.addCompany(company: company)
+        }
     }
     
     private func setupUI() {
