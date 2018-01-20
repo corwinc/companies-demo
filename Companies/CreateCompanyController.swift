@@ -53,7 +53,7 @@ class CreateCompanyController: UIViewController {
         do {
             try context.save()
             
-            // succuess
+            // success
             dismiss(animated: true, completion: {
                 // Must be cast as! Company (NSManagedObject class)
                 self.delegate?.didAddCompany(company: company as! Company)
