@@ -10,6 +10,12 @@ import UIKit
 import CoreData
 
 class CompaniesController: UITableViewController, CreateCompanyControllerDelegate {
+    func didEditcompany(company: Company) {
+        let row = companies.index(of: company)
+        let reloadIndexPath = IndexPath(row: row!, section: 0)
+        tableView.reloadRows(at: [reloadIndexPath], with: .middle)
+    }
+    
     func didAddCompany(company: Company) {
         companies.append(company)
         let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
@@ -22,11 +28,11 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
             let company = self.companies[indexPath.row]
             print("Attempting to delete company...:", company.name ?? "")
-            
+
             // Remove company from tableView
             self.companies.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            
+
             // Delete the company from CoreData
             let context = CoreDataManager.shared.persistentContainer.viewContext
             context.delete(company)
@@ -36,12 +42,21 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
                 print("Failed to delete company...", saveErr)
             }
         }
+        deleteAction.backgroundColor = .lightRed
         
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
-            print("Editing...")
-        }
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: handleEdit)
+        editAction.backgroundColor = .darkBlue
         
         return [deleteAction, editAction]
+    }
+    
+    private func handleEdit(action: UITableViewRowAction, indexPath: IndexPath) {
+        print("Editing company...")
+        let editCompanyController = CreateCompanyController()
+        editCompanyController.delegate = self
+        editCompanyController.company = companies[indexPath.row]
+        let navController = CustomNavigationController(rootViewController: editCompanyController)
+        present(navController, animated: true, completion: nil)
     }
     
     func fetchCompanies() {        
