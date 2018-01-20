@@ -18,15 +18,8 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     
     var companies = [Company]() // Creates empty array
     
-    func fetchCompanies() {
-        let persistentContainer = NSPersistentContainer(name: "CompanyModel")
-        persistentContainer.loadPersistentStores { (storeDescription, err) in
-            if let err = err {
-                fatalError("Loading store failed: \(err)")
-            }
-        }
-        
-        let context = persistentContainer.viewContext
+    func fetchCompanies() {        
+        let context = CoreDataManager.shared.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
         
