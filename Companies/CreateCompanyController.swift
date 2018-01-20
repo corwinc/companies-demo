@@ -21,7 +21,8 @@ class CreateCompanyController: UIViewController {
     var company: Company? {
         didSet {
             nameTextField.text = company?.name
-            // Use guard let if you don't have to return anything; if let if you do
+            // Use guard statement to handle case where founded == nil
+            // Use 'guard let' if you don't have to return anything; 'if let' if you do
             guard let founded = company?.founded else { return }
             datePicker.date = founded
         }

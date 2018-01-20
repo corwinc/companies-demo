@@ -116,7 +116,6 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
         cell.backgroundColor = .teal
         
         let company = companies[indexPath.row]
-//        cell.textLabel?.text = company.name
         if let name = company.name, let founded = company.founded {
 //            let locale = Locale(identifier: "EN")
 //            let dateStr = "\(name) - Founded: \(founded.description(with: locale))"
