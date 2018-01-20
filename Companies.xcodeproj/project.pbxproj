@@ -20,6 +20,7 @@
 		FCC069312012F13100207354 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC069302012F13100207354 /* CoreDataManager.swift */; };
 		FCC069332013392500207354 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC069322013392500207354 /* CompanyCell.swift */; };
 		FCC0693620134FC700207354 /* CompaniesController+CreateCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */; };
+		FCC0693A201350F300207354 /* CompaniesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC06939201350F300207354 /* CompaniesController+UITableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FCC069302012F13100207354 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FCC069322013392500207354 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+CreateCompany.swift"; sourceTree = "<group>"; };
+		FCC06939201350F300207354 /* CompaniesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+UITableView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				FC26F76F2011B1A6000BCA34 /* CompaniesController.swift */,
 				FCC069322013392500207354 /* CompanyCell.swift */,
 				FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */,
+				FCC06939201350F300207354 /* CompaniesController+UITableView.swift */,
 			);
 			path = Companies;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCC0692F2012E70600207354 /* CompanyModel.xcdatamodeld in Sources */,
+				FCC0693A201350F300207354 /* CompaniesController+UITableView.swift in Sources */,
 				FCC0692C2011DC6F00207354 /* CustomNavigationController.swift in Sources */,
 				FC26F7802011B832000BCA34 /* UIColor+theme.swift in Sources */,
 				FC26F7702011B1A6000BCA34 /* CompaniesController.swift in Sources */,
