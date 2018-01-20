@@ -126,6 +126,12 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
         let context = CoreDataManager.shared.persistentContainer.viewContext
         company?.name = nameTextField.text
         company?.founded = datePicker.date
+        
+        if let companyImage = companyImageView.image {
+            let imageData = UIImageJPEGRepresentation(companyImage, 0.8)
+            company?.imageData = imageData
+        }
+        
         do {
             try context.save()
             
