@@ -21,6 +21,9 @@ class CreateCompanyController: UIViewController {
     var company: Company? {
         didSet {
             nameTextField.text = company?.name
+            // Use guard let if you don't have to return anything; if let if you do
+            guard let founded = company?.founded else { return }
+            datePicker.date = founded
         }
     }
     
@@ -73,6 +76,7 @@ class CreateCompanyController: UIViewController {
     private func saveCompanyChanges() {
         let context = CoreDataManager.shared.persistentContainer.viewContext
         company?.name = nameTextField.text
+        company?.founded = datePicker.date
         do {
             try context.save()
             
@@ -89,6 +93,7 @@ class CreateCompanyController: UIViewController {
         // Use singleton CoreDataManager class to maintain closure to context after dismiss has completed
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
+        // Must use setValue if object doesn't exist in CoreData yet; otherwise can access property via obj.property
         company.setValue(nameTextField.text, forKey: "name")
         company.setValue(datePicker.date, forKey: "founded")
         
