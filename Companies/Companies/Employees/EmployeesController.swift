@@ -35,11 +35,11 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = IndentedLabel()
         if section == 0 {
-            label.text = "Executive"
+            label.text = EmployeeType.Executive.rawValue
         } else if section == 1 {
-            label.text = "Senior Management"
+            label.text = EmployeeType.SeniorManagement.rawValue
         } else {
-            label.text = "Staff"
+            label.text = EmployeeType.Staff.rawValue
         }
         label.backgroundColor = .lightBlue
         label.textColor = .darkBlue
@@ -52,20 +52,19 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     }
     
     var allEmployees = [[Employee]]()
+    let employeeTypes = [
+        EmployeeType.Executive.rawValue,
+        EmployeeType.SeniorManagement.rawValue,
+        EmployeeType.Staff.rawValue
+    ]
     
     private func fetchEmployees() {
         // Must use .allObjects to cast NSSet as an array; employees is instantiated as an array [Employees]
         guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
         
-        let executives = companyEmployees.filter{ $0.type == "Executive" }
-        let seniorManagement = companyEmployees.filter{ $0.type == "Senior Management" }
-        let staff = companyEmployees.filter{ $0.type == "Staff" }
-        
-        allEmployees = [
-            executives,
-            seniorManagement,
-            staff
-        ]
+        employeeTypes.forEach { (type) in
+            allEmployees.append(companyEmployees.filter{ $0.type == type })
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

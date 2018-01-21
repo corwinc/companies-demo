@@ -24,6 +24,7 @@
 		FCC0693C2013590700207354 /* EmployeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693B2013590700207354 /* EmployeesController.swift */; };
 		FCC0693F20135B8D00207354 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */; };
 		FCC069412013604400207354 /* CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC069402013604400207354 /* CreateEmployeeController.swift */; };
+		FCEF303B2014934D0087EBC7 /* EmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF303A2014934D0087EBC7 /* EmployeeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		FCC0693B2013590700207354 /* EmployeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesController.swift; sourceTree = "<group>"; };
 		FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		FCC069402013604400207354 /* CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmployeeController.swift; sourceTree = "<group>"; };
+		FCEF303A2014934D0087EBC7 /* EmployeeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				FCC0693B2013590700207354 /* EmployeesController.swift */,
 				FCC069402013604400207354 /* CreateEmployeeController.swift */,
+				FCEF303A2014934D0087EBC7 /* EmployeeType.swift */,
 			);
 			path = Employees;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				FC26F7842011CEC8000BCA34 /* CreateCompanyController.swift in Sources */,
 				FCC0693C2013590700207354 /* EmployeesController.swift in Sources */,
 				FC26F76E2011B1A6000BCA34 /* AppDelegate.swift in Sources */,
+				FCEF303B2014934D0087EBC7 /* EmployeeType.swift in Sources */,
 				FCC069312012F13100207354 /* CoreDataManager.swift in Sources */,
 				FC26F7822011C952000BCA34 /* Company.swift in Sources */,
 				FCC0693620134FC700207354 /* CompaniesController+CreateCompany.swift in Sources */,
