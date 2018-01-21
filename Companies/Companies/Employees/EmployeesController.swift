@@ -49,6 +49,11 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         
         let employee = employees[indexPath.row]
         cell.textLabel?.text = employee.name
+        
+        if let taxId = employee.employeeInformation?.taxId {
+            cell.textLabel?.text = "\(employee.name ?? "")     \(taxId)"
+        }
+        
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         cell.backgroundColor = .teal
@@ -73,6 +78,7 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         
         let createEmployeeController = CreateEmployeeController()
         createEmployeeController.delegate = self
+        createEmployeeController.company = company
         let navController = UINavigationController(rootViewController: createEmployeeController)
         
         present(navController, animated: true, completion: nil)
