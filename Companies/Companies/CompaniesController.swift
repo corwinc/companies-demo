@@ -65,6 +65,49 @@ class CompaniesController: UITableViewController {
         }
     }
     
+    @objc private func doNestedUpdates() {
+        DispatchQueue.global(qos: .background).async {
+            let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+            privateContext.parent = CoreDataManager.shared.persistentContainer.viewContext
+            
+            let request: NSFetchRequest<Company> = Company.fetchRequest()
+            // Only make changes to first company
+            request.fetchLimit = 1
+            do {
+                let companies = try privateContext.fetch(request)
+                
+                companies.forEach({ (company) in
+                    print(company.name ?? "")
+                    company.name = "D: \(company.name ?? "")"
+                })
+                
+                do {
+                    // Save child context
+                    try privateContext.save()
+                    
+                    DispatchQueue.main.async {
+                        // Save main context
+                        do {
+                            let context = CoreDataManager.shared.persistentContainer.viewContext
+                            
+                            // Should check for changes so CoreDataManager doesn't do unnecessary work
+                            if context.hasChanges {
+                                try context.save()
+                            }
+                        } catch let err {
+                            print("Failed to save main context:", err)
+                        }
+                        self.tableView.reloadData()
+                    }
+                } catch let err {
+                    print("Failed to save on private context:", err)
+                }
+            } catch let err {
+                print("Failed to fetch on private context", err)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -114,7 +157,7 @@ class CompaniesController: UITableViewController {
         navigationItem.title = "Companies"
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset)),
-            UIBarButtonItem(title: "Do Updates", style: .plain, target: self, action: #selector(doUpdates))
+            UIBarButtonItem(title: "Do Nested Updates", style: .plain, target: self, action: #selector(doNestedUpdates))
         ]
         setupPlusButtonInNavBar(selector: #selector(handleAddCompany))
     }
