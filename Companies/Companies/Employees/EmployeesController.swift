@@ -9,6 +9,14 @@
 import UIKit
 import CoreData
 
+class IndentedLabel: UILabel {
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        let customRect = UIEdgeInsetsInsetRect(rect, insets)
+        super.drawText(in: customRect)
+    }
+}
+
 class EmployeesController: UITableViewController, CreateEmployeeControllerDelegate {
     func didAddEmployee(employee: Employee) {
         employees.append(employee)
@@ -26,13 +34,15 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         navigationItem.title = company?.name
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = "HEADER"
+        let label = IndentedLabel()
+        if section == 0 {
+            label.text = "Short Names"
+        } else if section == 1 {
+            label.text = "Long Names"
+        } else {
+            label.text = "Really Long Names"
+        }
         label.backgroundColor = .lightBlue
         label.textColor = .darkBlue
         label.font = UIFont.boldSystemFont(ofSize: 16)
@@ -43,20 +53,62 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         return 50
     }
     
+    var shortNameEmployees = [Employee]()
+    var longNameEmployees = [Employee]()
+    var reallyLongNameEmployees = [Employee]()
+    var allEmployees = [[Employee]]()
+    
     private func fetchEmployees() {
         // Must use .allObjects to cast NSSet as an array; employees is instantiated as an array [Employees]
         guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
-        self.employees = companyEmployees
+        
+        shortNameEmployees = companyEmployees.filter({ (employee) -> Bool in
+            if let count = employee.name?.count {
+                return count < 6
+            } else {
+                return false
+            }
+        })
+        
+        longNameEmployees = companyEmployees.filter({ (employee) -> Bool in
+            if let count = employee.name?.count {
+                return count > 6 && count < 9
+            } else {
+                return false
+            }
+        })
+        
+        reallyLongNameEmployees = companyEmployees.filter({ (employee) -> Bool in
+            if let count = employee.name?.count {
+                return count > 9
+            } else {
+                return false
+            }
+        })
+        
+        allEmployees = [shortNameEmployees, longNameEmployees, reallyLongNameEmployees]
+//        self.employees = companyEmployees
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return allEmployees.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return employees.count
+        if (section == 0) {
+            return shortNameEmployees.count
+        } else if (section == 1) {
+            return longNameEmployees.count
+        } else {
+            return reallyLongNameEmployees.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: employeeCellId, for: indexPath)
         
-        let employee = employees[indexPath.row]
+        let employee = allEmployees[indexPath.section][indexPath.row]
+        
         cell.textLabel?.text = employee.name
         
         let dateFormatter = DateFormatter()
@@ -66,10 +118,6 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
             let birthdayDate = dateFormatter.string(from: birthday)
             cell.textLabel?.text = "\(employee.name ?? "")     \(birthdayDate)"
         }
-        
-//        if let taxId = employee.employeeInformation?.taxId {
-//            cell.textLabel?.text = "\(employee.name ?? "")     \(taxId)"
-//        }
         
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
@@ -91,8 +139,6 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     }
     
     @objc private func handleAdd() {
-        print("adding...")
-        
         let createEmployeeController = CreateEmployeeController()
         createEmployeeController.delegate = self
         createEmployeeController.company = company
