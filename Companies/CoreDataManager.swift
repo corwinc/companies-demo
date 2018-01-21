@@ -46,5 +46,20 @@ struct CoreDataManager {
             print("err resetting companies...", err)
         }
     }
+    
+    func createEmployee(employeeName: String) -> Error? {
+        let context = persistentContainer.viewContext
+        
+        let employee = NSEntityDescription.insertNewObject(forEntityName: "Employee", into: context)
+        employee.setValue(employeeName, forKey: "name")
+        
+        do {
+            try context.save()
+            return nil // do not have to return nil here if Error is optional (Error)
+        } catch let err {
+            print("Error saving employee:", err)
+            return err
+        }
+    }
 
 }
