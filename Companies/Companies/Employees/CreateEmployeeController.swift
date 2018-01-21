@@ -65,6 +65,15 @@ class CreateEmployeeController: UIViewController {
         guard let company = company else { return }
         
         guard let birthdayText = birthdayTextField.text else { return }
+        
+        // Perform validation
+        if birthdayText.isEmpty {
+            let alertController = UIAlertController(title: "Empty Birthday", message: "You have not entered a birthday.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+            return // do not want to continue with save
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyy"
         let birthdayDate = dateFormatter.date(from: birthdayText)
