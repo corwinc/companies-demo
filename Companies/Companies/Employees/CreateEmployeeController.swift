@@ -68,17 +68,19 @@ class CreateEmployeeController: UIViewController {
         
         // Perform validation
         if birthdayText.isEmpty {
-            let alertController = UIAlertController(title: "Empty Birthday", message: "You have not entered a birthday.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alertController, animated: true, completion: nil)
+            showError(title: "Empty Birthday", message: "You have not entered a birthday.")
             return // do not want to continue with save
         }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyy"
-        let birthdayDate = dateFormatter.date(from: birthdayText)
         
-        let tuple = CoreDataManager.shared.createEmployee(employeeName: employeeName, birthday: birthdayDate!, company: company)
+        guard let birthdayDate = dateFormatter.date(from: birthdayText) else {
+            showError(title: "Incorrect Date Format", message: "Please use the correct format")
+            return
+        }
+        
+        let tuple = CoreDataManager.shared.createEmployee(employeeName: employeeName, birthday: birthdayDate, company: company)
         if let err = tuple.1 {
             // this is where you might present and error modal
             print("err handling employee save:", err)
@@ -88,6 +90,12 @@ class CreateEmployeeController: UIViewController {
                 self.delegate?.didAddEmployee(employee: tuple.0!)
             })
         }
+    }
+    
+    private func showError(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     private func setupUI() {
