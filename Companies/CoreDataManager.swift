@@ -53,6 +53,13 @@ struct CoreDataManager {
         let employee = NSEntityDescription.insertNewObject(forEntityName: "Employee", into: context) as! Employee
         employee.setValue(employeeName, forKey: "name")
         
+        let employeeInformation = NSEntityDescription.insertNewObject(forEntityName: "EmployeeInformation", into: context) as! EmployeeInformation
+        // Use .taxId b/c safer than setValue in case taxId key changes; can do it only b/c employeeInfo is casted as! EmployeeInformation
+        employeeInformation.taxId = "456"
+//        employeeInformation.setValue("456", forKey: "taxId")
+        
+        employee.employeeInformation = employeeInformation
+        
         do {
             try context.save()
             return (employee, nil) // do not have to return nil here if Error is optional (Error)
