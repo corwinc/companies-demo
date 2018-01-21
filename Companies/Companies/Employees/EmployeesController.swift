@@ -27,17 +27,22 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     }
     
     private func fetchEmployees() {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let request = NSFetchRequest<Employee>(entityName: "Employee")
+        // Must use .allObjects to cast NSSet as an array; employees is instantiated as an array [Employees]
+        guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
+        self.employees = companyEmployees
         
-        do {
-            let employees = try context.fetch(request)
-            // Must manually set controller's employees list equal to fetched employees
-            self.employees = employees
-//            employees.forEach{print("Employee name:", $0.name ?? "")}
-        } catch let err {
-            print("Failed to fetch employees", err)
-        }
+        // FETCH ALL EMPLOYEES REQUEST PRIOR TO COMPANY:EMPLOYEES RELATIONSHIP SETUP
+//        let context = CoreDataManager.shared.persistentContainer.viewContext
+//        let request = NSFetchRequest<Employee>(entityName: "Employee")
+//
+//        do {
+//            let employees = try context.fetch(request)
+//            // Must manually set controller's employees list equal to fetched employees
+//            self.employees = employees
+////            employees.forEach{print("Employee name:", $0.name ?? "")}
+//        } catch let err {
+//            print("Failed to fetch employees", err)
+//        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
