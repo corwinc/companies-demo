@@ -47,18 +47,18 @@ struct CoreDataManager {
         }
     }
     
-    func createEmployee(employeeName: String) -> Error? {
+    func createEmployee(employeeName: String) -> (Employee?, Error?) {
         let context = persistentContainer.viewContext
         
-        let employee = NSEntityDescription.insertNewObject(forEntityName: "Employee", into: context)
+        let employee = NSEntityDescription.insertNewObject(forEntityName: "Employee", into: context) as! Employee
         employee.setValue(employeeName, forKey: "name")
         
         do {
             try context.save()
-            return nil // do not have to return nil here if Error is optional (Error)
+            return (employee, nil) // do not have to return nil here if Error is optional (Error)
         } catch let err {
             print("Error saving employee:", err)
-            return err
+            return (nil, err)
         }
     }
 

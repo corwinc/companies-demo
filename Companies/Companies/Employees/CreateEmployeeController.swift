@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol CreateEmployeeControllerDelegate {
+    func didAddEmployee(employee: Employee)
+}
+
 class CreateEmployeeController: UIViewController {
+    
+    var delegate: CreateEmployeeControllerDelegate?
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -40,12 +46,15 @@ class CreateEmployeeController: UIViewController {
     
     @objc private func handleSave() {
         guard let employeeName = nameTextField.text else { return }
-        let err = CoreDataManager.shared.createEmployee(employeeName: employeeName)
-        if let err = err {
+        let tuple = CoreDataManager.shared.createEmployee(employeeName: employeeName)
+        if let err = tuple.1 {
             // this is where you might present and error modal
             print("err handling employee save:", err)
         } else {
-           dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: {
+                // call the delegate
+                self.delegate?.didAddEmployee(employee: tuple.0!)
+            })
         }
     }
     

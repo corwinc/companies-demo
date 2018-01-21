@@ -97,12 +97,11 @@
 		FCC06934201339E800207354 /* Companies */ = {
 			isa = PBXGroup;
 			children = (
+				FCC06942201416E600207354 /* Employees */,
 				FC26F76F2011B1A6000BCA34 /* CompaniesController.swift */,
 				FCC069322013392500207354 /* CompanyCell.swift */,
 				FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */,
 				FCC06939201350F300207354 /* CompaniesController+UITableView.swift */,
-				FCC0693B2013590700207354 /* EmployeesController.swift */,
-				FCC069402013604400207354 /* CreateEmployeeController.swift */,
 				FC26F7832011CEC8000BCA34 /* CreateCompanyController.swift */,
 			);
 			path = Companies;
@@ -114,6 +113,15 @@
 				FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FCC06942201416E600207354 /* Employees */ = {
+			isa = PBXGroup;
+			children = (
+				FCC0693B2013590700207354 /* EmployeesController.swift */,
+				FCC069402013604400207354 /* CreateEmployeeController.swift */,
+			);
+			path = Employees;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
