@@ -33,6 +33,38 @@ class CompaniesController: UITableViewController {
         }
     }
     
+    @objc private func doUpdates() {
+        CoreDataManager.shared.persistentContainer.performBackgroundTask { (backgroundContext) in
+            let request:  NSFetchRequest<Company> = Company.fetchRequest()
+            
+            do {
+                let companies = try backgroundContext.fetch(request)
+                
+                companies.forEach({ (company) in
+                    company.name = "A: \(company.name ?? "")"
+                })
+                
+                do {
+                    try backgroundContext.save()
+                    
+                    DispatchQueue.main.async {
+                        // Reset will forget all objects you've fetched before
+                        CoreDataManager.shared.persistentContainer.viewContext.reset()
+                        // You don't want to refetch everything if you simply want to update 1-2 companies
+                        self.companies = CoreDataManager.shared.fetchCompanies()
+                        // Is there a way to only merge the changes onto the main view context? YES
+                        self.tableView.reloadData()
+                    }
+                } catch let err {
+                    print("Failed to save on background", err)
+                }
+            } catch let err {
+                print("Error fetching companies", err)
+            }
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,7 +114,7 @@ class CompaniesController: UITableViewController {
         navigationItem.title = "Companies"
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset)),
-            UIBarButtonItem(title: "Do Work", style: .plain, target: self, action: #selector(doWork))
+            UIBarButtonItem(title: "Do Updates", style: .plain, target: self, action: #selector(doUpdates))
         ]
         setupPlusButtonInNavBar(selector: #selector(handleAddCompany))
     }
