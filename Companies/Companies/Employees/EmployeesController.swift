@@ -19,7 +19,6 @@ class IndentedLabel: UILabel {
 
 class EmployeesController: UITableViewController, CreateEmployeeControllerDelegate {
     func didAddEmployee(employee: Employee) {
-        employees.append(employee)
         fetchEmployees()
         tableView.reloadData()
     }
@@ -27,12 +26,6 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     let employeeCellId = "employeeCell"
     
     var company: Company?
-    
-    var employees = [Employee]()
-    var shortNameEmployees = [Employee]()
-    var longNameEmployees = [Employee]()
-    var reallyLongNameEmployees = [Employee]()
-    var allEmployees = [[Employee]]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,11 +35,11 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = IndentedLabel()
         if section == 0 {
-            label.text = "Short Names"
+            label.text = "Executive"
         } else if section == 1 {
-            label.text = "Long Names"
+            label.text = "Senior Management"
         } else {
-            label.text = "Really Long Names"
+            label.text = "Staff"
         }
         label.backgroundColor = .lightBlue
         label.textColor = .darkBlue
@@ -58,35 +51,21 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         return 50
     }
     
+    var allEmployees = [[Employee]]()
+    
     private func fetchEmployees() {
         // Must use .allObjects to cast NSSet as an array; employees is instantiated as an array [Employees]
         guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
         
-        shortNameEmployees = companyEmployees.filter({ (employee) -> Bool in
-            if let count = employee.name?.count {
-                return count < 6
-            } else {
-                return false
-            }
-        })
+        let executives = companyEmployees.filter{ $0.type == "Executive" }
+        let seniorManagement = companyEmployees.filter{ $0.type == "Senior Management" }
+        let staff = companyEmployees.filter{ $0.type == "Staff" }
         
-        longNameEmployees = companyEmployees.filter({ (employee) -> Bool in
-            if let count = employee.name?.count {
-                return count > 6 && count < 9
-            } else {
-                return false
-            }
-        })
-        
-        reallyLongNameEmployees = companyEmployees.filter({ (employee) -> Bool in
-            if let count = employee.name?.count {
-                return count > 9
-            } else {
-                return false
-            }
-        })
-        
-        allEmployees = [shortNameEmployees, longNameEmployees, reallyLongNameEmployees]
+        allEmployees = [
+            executives,
+            seniorManagement,
+            staff
+        ]
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
