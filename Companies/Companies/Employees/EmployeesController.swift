@@ -19,8 +19,11 @@ class IndentedLabel: UILabel {
 
 class EmployeesController: UITableViewController, CreateEmployeeControllerDelegate {
     func didAddEmployee(employee: Employee) {
-        fetchEmployees()
-        tableView.reloadData()
+        guard let section = employeeTypes.index(of: employee.type!) else { return }
+        let row = allEmployees[section].count
+        let insertionIndexPath = IndexPath(row: row, section: section)
+        allEmployees[section].append(employee)
+        tableView.insertRows(at: [insertionIndexPath], with: .middle)
     }
     
     let employeeCellId = "employeeCell"
