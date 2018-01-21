@@ -20,6 +20,7 @@ class IndentedLabel: UILabel {
 class EmployeesController: UITableViewController, CreateEmployeeControllerDelegate {
     func didAddEmployee(employee: Employee) {
         employees.append(employee)
+        fetchEmployees()
         tableView.reloadData()
     }
     
@@ -28,6 +29,10 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     var company: Company?
     
     var employees = [Employee]()
+    var shortNameEmployees = [Employee]()
+    var longNameEmployees = [Employee]()
+    var reallyLongNameEmployees = [Employee]()
+    var allEmployees = [[Employee]]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,11 +57,6 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-    
-    var shortNameEmployees = [Employee]()
-    var longNameEmployees = [Employee]()
-    var reallyLongNameEmployees = [Employee]()
-    var allEmployees = [[Employee]]()
     
     private func fetchEmployees() {
         // Must use .allObjects to cast NSSet as an array; employees is instantiated as an array [Employees]
@@ -87,7 +87,6 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         })
         
         allEmployees = [shortNameEmployees, longNameEmployees, reallyLongNameEmployees]
-//        self.employees = companyEmployees
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -95,18 +94,11 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0) {
-            return shortNameEmployees.count
-        } else if (section == 1) {
-            return longNameEmployees.count
-        } else {
-            return reallyLongNameEmployees.count
-        }
+        return allEmployees[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: employeeCellId, for: indexPath)
-        
         let employee = allEmployees[indexPath.section][indexPath.row]
         
         cell.textLabel?.text = employee.name
