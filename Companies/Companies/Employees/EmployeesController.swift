@@ -30,19 +30,6 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         // Must use .allObjects to cast NSSet as an array; employees is instantiated as an array [Employees]
         guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
         self.employees = companyEmployees
-        
-        // FETCH ALL EMPLOYEES REQUEST PRIOR TO COMPANY:EMPLOYEES RELATIONSHIP SETUP
-//        let context = CoreDataManager.shared.persistentContainer.viewContext
-//        let request = NSFetchRequest<Employee>(entityName: "Employee")
-//
-//        do {
-//            let employees = try context.fetch(request)
-//            // Must manually set controller's employees list equal to fetched employees
-//            self.employees = employees
-////            employees.forEach{print("Employee name:", $0.name ?? "")}
-//        } catch let err {
-//            print("Failed to fetch employees", err)
-//        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,9 +42,17 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         let employee = employees[indexPath.row]
         cell.textLabel?.text = employee.name
         
-        if let taxId = employee.employeeInformation?.taxId {
-            cell.textLabel?.text = "\(employee.name ?? "")     \(taxId)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyy"
+
+        if let birthday = employee.employeeInformation?.birthday {
+            let birthdayDate = dateFormatter.string(from: birthday)
+            cell.textLabel?.text = "\(employee.name ?? "")     \(birthdayDate)"
         }
+        
+//        if let taxId = employee.employeeInformation?.taxId {
+//            cell.textLabel?.text = "\(employee.name ?? "")     \(taxId)"
+//        }
         
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
