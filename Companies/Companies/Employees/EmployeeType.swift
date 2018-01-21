@@ -12,4 +12,5 @@ enum EmployeeType: String {
     case Executive
     case SeniorManagement = "Senior Management"
     case Staff
+    case Intern
 }
