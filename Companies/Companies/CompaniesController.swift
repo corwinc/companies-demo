@@ -12,6 +12,27 @@ import CoreData
 class CompaniesController: UITableViewController {
     var companies = [Company]() // Creates empty array
     
+    @objc private func doWork() {
+        CoreDataManager.shared.persistentContainer.performBackgroundTask { (backgroundContext) in
+            (0...5).forEach { (value) in
+                print(value)
+                let company = Company(context: backgroundContext)
+                company.name = String(value)
+            }
+            
+            do {
+                try backgroundContext.save()
+                
+                DispatchQueue.main.async {
+                    self.companies = CoreDataManager.shared.fetchCompanies()
+                    self.tableView.reloadData()
+                }
+            } catch let err {
+                print("Failed to save", err)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +80,10 @@ class CompaniesController: UITableViewController {
     
     func setupNavigation() {
         navigationItem.title = "Companies"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset)),
+            UIBarButtonItem(title: "Do Work", style: .plain, target: self, action: #selector(doWork))
+        ]
         setupPlusButtonInNavBar(selector: #selector(handleAddCompany))
     }
     
