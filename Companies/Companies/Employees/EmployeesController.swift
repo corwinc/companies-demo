@@ -26,6 +26,23 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         navigationItem.title = company?.name
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "HEADER"
+        label.backgroundColor = .lightBlue
+        label.textColor = .darkBlue
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
     private func fetchEmployees() {
         // Must use .allObjects to cast NSSet as an array; employees is instantiated as an array [Employees]
         guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
