@@ -54,6 +54,7 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     ]
     
     private func fetchEmployees() {
+        allEmployees = []
         // Must use .allObjects to cast NSSet as an array; employees is instantiated as an array [Employees]
         guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
         
