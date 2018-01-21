@@ -80,7 +80,9 @@ class CreateEmployeeController: UIViewController {
             return
         }
         
-        let tuple = CoreDataManager.shared.createEmployee(employeeName: employeeName, birthday: birthdayDate, company: company)
+        guard let employeeType = employeeTypeSegmentedControl.titleForSegment(at: employeeTypeSegmentedControl.selectedSegmentIndex) else { return }
+        
+        let tuple = CoreDataManager.shared.createEmployee(employeeName: employeeName, employeeType: employeeType, birthday: birthdayDate, company: company)
         if let err = tuple.1 {
             // this is where you might present and error modal
             print("err handling employee save:", err)
@@ -99,9 +101,11 @@ class CreateEmployeeController: UIViewController {
     }
     
     let employeeTypeSegmentedControl: UISegmentedControl = {
-        let types = ["1", "2", "3"]
+        let types = ["Executive", "Senior Management", "Staff"]
         let sc = UISegmentedControl(items: types)
+        sc.selectedSegmentIndex = 0
         sc.translatesAutoresizingMaskIntoConstraints = false
+        sc.tintColor = .darkBlue
         return sc
     }()
     
