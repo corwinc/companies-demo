@@ -98,8 +98,15 @@ class CreateEmployeeController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    let employeeTypeSegmentedControl: UISegmentedControl = {
+        let types = ["1", "2", "3"]
+        let sc = UISegmentedControl(items: types)
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        return sc
+    }()
+    
     private func setupUI() {
-        _ = setupLightBlueBackgroundView(height: 100)
+        _ = setupLightBlueBackgroundView(height: 150)
         
         view.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -124,5 +131,11 @@ class CreateEmployeeController: UIViewController {
         birthdayTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         birthdayTextField.bottomAnchor.constraint(equalTo: birthdayLabel.bottomAnchor).isActive = true
         birthdayTextField.topAnchor.constraint(equalTo: birthdayLabel.topAnchor).isActive = true
+        
+        view.addSubview(employeeTypeSegmentedControl)
+        employeeTypeSegmentedControl.topAnchor.constraint(equalTo: birthdayLabel.bottomAnchor).isActive = true
+        employeeTypeSegmentedControl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        employeeTypeSegmentedControl.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        employeeTypeSegmentedControl.heightAnchor.constraint(equalToConstant: 34).isActive = true
     }
 }
