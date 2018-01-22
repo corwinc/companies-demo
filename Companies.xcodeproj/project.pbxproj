@@ -25,6 +25,7 @@
 		FCC0693F20135B8D00207354 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */; };
 		FCC069412013604400207354 /* CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC069402013604400207354 /* CreateEmployeeController.swift */; };
 		FCEF303B2014934D0087EBC7 /* EmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF303A2014934D0087EBC7 /* EmployeeType.swift */; };
+		FCEF303D2014ACDA0087EBC7 /* CompaniesAutoUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF303C2014ACDA0087EBC7 /* CompaniesAutoUpdateController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		FCC0693E20135B8D00207354 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		FCC069402013604400207354 /* CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmployeeController.swift; sourceTree = "<group>"; };
 		FCEF303A2014934D0087EBC7 /* EmployeeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeType.swift; sourceTree = "<group>"; };
+		FCEF303C2014ACDA0087EBC7 /* CompaniesAutoUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesAutoUpdateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				FCC0693520134FC700207354 /* CompaniesController+CreateCompany.swift */,
 				FCC06939201350F300207354 /* CompaniesController+UITableView.swift */,
 				FC26F7832011CEC8000BCA34 /* CreateCompanyController.swift */,
+				FCEF303C2014ACDA0087EBC7 /* CompaniesAutoUpdateController.swift */,
 			);
 			path = Companies;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				FCC0693A201350F300207354 /* CompaniesController+UITableView.swift in Sources */,
 				FCC0692C2011DC6F00207354 /* CustomNavigationController.swift in Sources */,
 				FC26F7802011B832000BCA34 /* UIColor+theme.swift in Sources */,
+				FCEF303D2014ACDA0087EBC7 /* CompaniesAutoUpdateController.swift in Sources */,
 				FC26F7702011B1A6000BCA34 /* CompaniesController.swift in Sources */,
 				FCC069332013392500207354 /* CompanyCell.swift in Sources */,
 				FC26F7842011CEC8000BCA34 /* CreateCompanyController.swift in Sources */,
